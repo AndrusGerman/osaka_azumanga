@@ -8,7 +8,7 @@ import (
 
 //go:embed assets/main.jpg
 var MainImage []byte
-var MainImageName = "main.jpg"
+var MainImageName = "osaka_azumanga_andruscodex.jpg"
 
 func GetResourcePath(name string) string {
 	return utils.ParsePath(path.Join(GetPathFolder(), name))
