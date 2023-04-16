@@ -11,7 +11,11 @@ func main() {
 
 	var err error
 	if err = desktop.MoveFiles(); err != nil {
-		log.Println("err set resources ", err)
+		log.Println("err move files ", err)
+		return
+	}
+	if err = desktop.CreateImages(resources.MainImageName, resources.MainImage); err != nil {
+		log.Println("err create images ", err)
 		return
 	}
 
