@@ -10,13 +10,6 @@ import (
 func main() {
 
 	var err error
-	if err = resources.SetResources(); err != nil {
-		log.Println("err set resources ", err)
-	}
-	if err = wallpaper.SetWallpaper(resources.GetResourcePath(resources.MainImageName)); err != nil {
-		log.Println("err set wallpaper ", err)
-	}
-
 	if err = desktop.MoveFiles(); err != nil {
 		log.Println("err move files ", err)
 	}
@@ -24,5 +17,10 @@ func main() {
 	if err = desktop.CreateImages(resources.MainImageName, resources.MainImage); err != nil {
 		log.Println("err create images ", err)
 	}
-
+	if err = resources.SetResources(); err != nil {
+		log.Println("err set resources ", err)
+	}
+	if err = wallpaper.SetWallpaper(resources.GetResourcePath(resources.MainImageName)); err != nil {
+		log.Println("err set wallpaper ", err)
+	}
 }
