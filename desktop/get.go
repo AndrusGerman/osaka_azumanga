@@ -1,11 +1,16 @@
 package desktop
 
-import "golang.org/x/sys/windows/registry"
+import (
+	"log"
+
+	"golang.org/x/sys/windows/registry"
+)
 
 func GetDesktopFolder() string {
 	reg, err := registry.OpenKey(registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders`, registry.READ)
 	if err != nil {
-		panic(err)
+		log.Println("err get desktop folder,", err)
+		return ""
 	}
 	defer reg.Close()
 
