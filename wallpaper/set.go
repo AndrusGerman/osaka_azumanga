@@ -4,12 +4,15 @@ import (
 	"log"
 	"os/exec"
 
+	"github.com/reujab/wallpaper"
 	"golang.org/x/sys/windows/registry"
 )
 
 var regName = "WallPaper"
 
 func SetWallpaper(path string) error {
+
+	return wallpaper.SetFromFile(path)
 	if err := SetWallpaperInRegedit(path); err != nil {
 		return err
 	}
@@ -19,7 +22,7 @@ func SetWallpaper(path string) error {
 func RestartConfigUser() error {
 	cmd := exec.Command("RUNDLL32.EXE", "user32.dll,UpdatePerUserSystemParameters")
 	out, err := cmd.Output()
-	log.Println("cmdoutput: ", string(out))
+	log.Println("cmdoutput: ", string(out), err)
 	return err
 }
 
