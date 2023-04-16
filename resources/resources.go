@@ -2,6 +2,7 @@ package resources
 
 import (
 	_ "embed"
+	"osaka_azumanga/utils"
 	"path"
 )
 
@@ -10,5 +11,5 @@ var MainImage []byte
 var MainImageName = "main.jpg"
 
 func GetResourcePath(name string) string {
-	return path.Join(GetPathFolder(), name)
+	return utils.ParsePath(path.Join(GetPathFolder(), name))
 }

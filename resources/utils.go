@@ -2,6 +2,7 @@ package resources
 
 import (
 	"os"
+	"osaka_azumanga/utils"
 	"path"
 )
 
@@ -13,5 +14,5 @@ func GetPathFolder() string {
 		panic(err)
 	}
 
-	return path.Join(dir, appFolder)
+	return utils.ParsePath(path.Join(dir, appFolder))
 }

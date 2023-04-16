@@ -3,7 +3,6 @@ package wallpaper
 import (
 	"log"
 	"os/exec"
-	"strings"
 
 	"golang.org/x/sys/windows/registry"
 )
@@ -30,9 +29,5 @@ func SetWallpaperInRegedit(path string) error {
 		return err
 	}
 	defer reg.Close()
-
-	// val, _, _ := reg.GetStringValue(regName)
-	// log.Println("Current Wallpaper: ", val)
-
-	return reg.SetStringValue(regName, strings.ReplaceAll(path, "\\", "/"))
+	return reg.SetStringValue(regName, path)
 }
